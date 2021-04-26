@@ -1,17 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const todoList = [
-  {
-    "id": 1,
-    "name": "牛乳を買う",
-    "done": false
-  },
-  {
-    "id": 2,
-    "name": "部屋を掃除する",
-    "done": true
-  }
-];
+const todoList = [];
 
 class Todo {
   constructor(id, name, done) {
@@ -28,6 +17,14 @@ class Todo {
     };
   }
 }
+
+router.post("/initialize", (req, res, next) => {
+  if (todoList.length === 0) {
+    todoList.push(new Todo(1, "牛乳を買う", false))
+    todoList.push(new Todo(2, "部屋の掃除をする", false))
+  }
+  return res.status(201).send({})
+})
 
 router.post("/", (req, res, next) => {
   const id = todoList.length ? todoList[todoList.length - 1].id + 1 : 0;
