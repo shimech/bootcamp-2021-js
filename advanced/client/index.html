@@ -14,7 +14,7 @@
     <main>
       <div class="hero">TODO-Manager</div>
       <div class="todo-form__wrapper">
-        <form method="POST" action="/todos" class="todo-form">
+        <form method="POST" action="/todos" class="todo-form" target="add-todo-item">
           <label for="name" class="todo-form__label">TODO</label>
           <div class="todo-form-input__wrapper">
             <input id="name" name="name" type="text" class="todo-form__input" />
@@ -34,6 +34,8 @@
     </main>
     <footer class="application-footer">
     </footer>
+
+    <iframe name="add-todo-item" style="width:0px;height:0px;border:0px;"></iframe>
 
     <!-- ここを追加 -->
     <script type="module" src="/js/index.js"></script>
