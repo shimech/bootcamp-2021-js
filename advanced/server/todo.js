@@ -18,6 +18,15 @@ class Todo {
   }
 }
 
+router.post("/initialize", (req, res, next) => {
+  if (todoList.length === 0) {
+    todoList.push(new Todo(1, "牛乳を買う", false))
+    todoList.push(new Todo(2, "部屋の掃除をする", false))
+    todoList.push(new Todo(2, "もうやっていること", true))
+  }
+  return res.status(201).send({})
+})
+
 router.post("/", (req, res, next) => {
   const id = todoList.length ? todoList[todoList.length - 1].id + 1 : 0;
   const item = new Todo(id, req.body.name, false);
@@ -32,8 +41,7 @@ router.get("/", (req, res, next) => {
 router.patch("/:id", (req, res, next) => {
   const id = req.params.id;
   const todo = todoList.find(todo => todo.id == id);
-  const { name, done } = req.body;
-  todo.name = name;
+  const { done } = req.body;
   todo.done = done;
   return res.status(201).send(todo);
 });

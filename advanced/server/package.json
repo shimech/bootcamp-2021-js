@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js"
+    "start": "node ./index.js",
+    "init": "curl -X POST http://localhost:3000/todo/initialize"
   },
   "author": "maxmellon",
   "license": "ISC",

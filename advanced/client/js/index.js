@@ -1,5 +1,12 @@
-const main = () => {
-  console.log("ここにロジックを記述");
+import { getTodoList } from "./components/todoList.js"
+import { addCheckHandler, addDeleteHandler, addSubmitHandler, showTodoList } from "./template/index.js"
+
+const main = async () => {
+  const { todoList } = await getTodoList()
+  showTodoList(todoList)
+  addSubmitHandler()
+  addCheckHandler()
+  addDeleteHandler()
 };
 
-main();
+await main();
