@@ -43,7 +43,6 @@ router.patch("/:id", (req, res, next) => {
   const todo = todoList.find(todo => todo.id == id);
   const { done } = req.body;
   todo.done = done;
-  console.log(todo)
   return res.status(201).send(todo);
 });
 
