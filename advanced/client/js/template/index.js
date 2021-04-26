@@ -10,7 +10,8 @@ export const showTodoList = todoList => {
 
 export const addSubmitHandler = () => {
     const element = document.querySelector("form.todo-form")
-    element.addEventListener("submit", async () => {
+    element.addEventListener("submit", async event => {
+        event.preventDefault()
         const name = document.querySelector("input.todo-form__input").value
         await addTodoItem(name)
     })
