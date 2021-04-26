@@ -27,3 +27,7 @@ export const addTodoItem = async name => {
         console.log(err)
     }
 }
+
+export const updateTodoItem = async (id, name, done) => {
+    const url = `${baseUrl}/todo/1`
+}

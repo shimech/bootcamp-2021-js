@@ -22,6 +22,7 @@ router.post("/initialize", (req, res, next) => {
   if (todoList.length === 0) {
     todoList.push(new Todo(1, "牛乳を買う", false))
     todoList.push(new Todo(2, "部屋の掃除をする", false))
+    todoList.push(new Todo(2, "もうやっていること", true))
   }
   return res.status(201).send({})
 })
@@ -43,6 +44,7 @@ router.patch("/:id", (req, res, next) => {
   const { name, done } = req.body;
   todo.name = name;
   todo.done = done;
+  console.log(todo)
   return res.status(201).send(todo);
 });
 

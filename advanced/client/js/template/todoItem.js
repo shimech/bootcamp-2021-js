@@ -9,7 +9,7 @@ const createTodoItemElement = todoItem => {
     inputElement.setAttribute("data-todo-id", todoItem.id)
     inputElement.setAttribute("type", "checkbox")
     inputElement.setAttribute("class", "todo-toggle")
-    inputElement.setAttribute("value", "checked")
+    inputElement.checked = todoItem.done
     const spanElement = document.createElement("span")
     spanElement.setAttribute("class", "todo-toggle__checkmark")
 
