@@ -1,12 +1,5 @@
-import { getTodoList } from "./components/todoList.js"
-import { addCheckHandler, addDeleteHandler, addSubmitHandler, showTodoList } from "./template/index.js"
+import Store from "./store.js"
 
-const main = async () => {
-  const { todoList } = await getTodoList()
-  showTodoList(todoList)
-  addSubmitHandler()
-  addCheckHandler()
-  addDeleteHandler()
-};
-
-await main();
+const store = new Store()
+await store.fetchTodoList()
+store.data.render()

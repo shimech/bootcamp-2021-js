@@ -36,6 +36,20 @@
     </footer>
 
     <!-- ここを追加 -->
+    <template id="todo-item">
+      <li class="todo-item">
+        <label class="todo-toggle__container">
+          <input
+            type="checkbox"
+            class="todo-toggle"
+          />
+          <span class="todo-toggle__checkmark"></span>
+        </label>
+        <div class="todo-name"></div>
+        <div class="todo-remove-button">x</div>
+      </li>
+    </template>
+
     <script type="module" src="/js/index.js"></script>
 
   </body>
