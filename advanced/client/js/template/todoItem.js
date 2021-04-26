@@ -1,4 +1,4 @@
-const createTodoItemElement = (todoItem) => {
+const createTodoItemElement = todoItem => {
     const element = document.createElement("li")
     element.setAttribute("class", "todo-item")
 
