@@ -43,3 +43,15 @@ export const updateTodoItem = async (id, done) => {
         console.log(err)
     }
 }
+
+export const deleteTodoItem = async id => {
+    const url = `${baseUrl}/todo/${id}`
+    try {
+        const response = await fetch(url, {
+            method: "DELETE"
+        })
+        return response
+    } catch (err) {
+        console.log(err)
+    }
+}

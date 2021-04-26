@@ -1,4 +1,4 @@
-import { addTodoItem, updateTodoItem } from "../components/todoList.js"
+import { addTodoItem, deleteTodoItem, updateTodoItem } from "../components/todoList.js"
 import createTodoItemElement from "./todoItem.js"
 
 export const showTodoList = todoList => {
@@ -22,5 +22,14 @@ export const addCheckHandler = () => {
         const id = element.getAttribute("data-todo-id")
         const done = element.checked
         await updateTodoItem(id, done)
+    }))
+}
+
+export const addDeleteHandler = () => {
+    const elements = document.querySelectorAll("div.todo-remove-button")
+    elements.forEach(element => element.addEventListener("click", async () => {
+        const id = element.getAttribute("data-todo-id")
+        await deleteTodoItem(id)
+        element.parentNode.remove()
     }))
 }
