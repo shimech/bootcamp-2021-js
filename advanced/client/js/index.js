@@ -1,13 +1,9 @@
 import getTodoList from "./components/todoList.js"
-import createTodoItemElement from "./template/todoItem.js"
+import { showTodoList } from "./template/index.js"
 
 const main = async () => {
   const { todoList } = await getTodoList()
-  const todoListElement = document.querySelector("ul.todos")
-  todoListElement.innerHTML = ""
-  todoList.forEach(todoItem => {
-    todoListElement.appendChild(createTodoItemElement(todoItem))
-  })
+  showTodoList(todoList)
 };
 
 await main();
