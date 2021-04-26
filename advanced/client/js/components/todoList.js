@@ -28,6 +28,18 @@ export const addTodoItem = async name => {
     }
 }
 
-export const updateTodoItem = async (id, name, done) => {
-    const url = `${baseUrl}/todo/1`
+export const updateTodoItem = async (id, done) => {
+    const url = `${baseUrl}/todo/${id}`
+    try {
+        const response = await fetch(url, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ done })
+        }).then(d => d.json())
+        return response
+    } catch (err) {
+        console.log(err)
+    }
 }

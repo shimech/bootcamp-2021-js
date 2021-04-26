@@ -41,8 +41,7 @@ router.get("/", (req, res, next) => {
 router.patch("/:id", (req, res, next) => {
   const id = req.params.id;
   const todo = todoList.find(todo => todo.id == id);
-  const { name, done } = req.body;
-  todo.name = name;
+  const { done } = req.body;
   todo.done = done;
   console.log(todo)
   return res.status(201).send(todo);
