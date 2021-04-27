@@ -39,9 +39,28 @@ class Store {
       const newTodoItem = new Todo(this.data.element, {
         id: data.id,
         name: data.name,
-        done: data.false,
+        done: false,
       });
       this.data.props.todoList.push(newTodoItem);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async doneTodoItem(id, name, done) {
+    const url = this.baseUrl + `/${id}`;
+    try {
+      const data = await fetch(url, {
+        method: "PATCH",
+        headers: this.headers,
+        body: JSON.stringify({ name, done }),
+      }).then((response) => response.json());
+      const newTodoItem = new Todo(this.data.element, {
+        id: data.id,
+        name: data.name,
+        done: data.done,
+      });
+      this.data.props.todoList.splice(data.id - 1, 1, newTodoItem);
     } catch (err) {
       console.log(err);
     }

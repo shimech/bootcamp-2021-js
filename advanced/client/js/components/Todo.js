@@ -1,3 +1,5 @@
+import store from "../store.js";
+
 class Todo {
   constructor(parent, { id, name, done }) {
     this.parent = parent;
@@ -11,10 +13,19 @@ class Todo {
     const inputElement = clone.querySelector("input.todo-toggle");
     inputElement.setAttribute("data-todo-id", this.props.id);
     inputElement.checked = this.props.done;
+    inputElement.addEventListener("click", () => {
+      const { id, name, done } = this.props;
+      store.doneTodoItem(id, name, !done);
+    });
+
     const nameElement = clone.querySelector("div.todo-name");
     nameElement.innerText = this.props.name;
+
     const removeElement = clone.querySelector("div.todo-remove-button");
     removeElement.setAttribute("data-todo-id", this.props.id);
+    removeElement.addEventListener("click", () => {
+      console.log("remove");
+    });
 
     this.parent.appendChild(clone);
   }

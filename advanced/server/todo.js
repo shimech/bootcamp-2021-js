@@ -13,19 +13,19 @@ class Todo {
     return {
       id: this.id,
       name: this.name,
-      done: this.done
+      done: this.done,
     };
   }
 }
 
 router.post("/initialize", (req, res, next) => {
   if (todoList.length === 0) {
-    todoList.push(new Todo(1, "牛乳を買う", false))
-    todoList.push(new Todo(2, "部屋の掃除をする", false))
-    todoList.push(new Todo(2, "もうやっていること", true))
+    todoList.push(new Todo(1, "牛乳を買う", false));
+    todoList.push(new Todo(2, "部屋の掃除をする", false));
+    todoList.push(new Todo(3, "もうやっていること", true));
   }
-  return res.status(201).send({})
-})
+  return res.status(201).send({});
+});
 
 router.post("/", (req, res, next) => {
   const id = todoList.length ? todoList[todoList.length - 1].id + 1 : 0;
@@ -40,15 +40,16 @@ router.get("/", (req, res, next) => {
 
 router.patch("/:id", (req, res, next) => {
   const id = req.params.id;
-  const todo = todoList.find(todo => todo.id == id);
-  const { done } = req.body;
+  const todo = todoList.find((todo) => todo.id == id);
+  const { name, done } = req.body;
+  todo.name = name;
   todo.done = done;
   return res.status(201).send(todo);
 });
 
 router.delete("/:id", (req, res, next) => {
   const id = req.params.id;
-  const index = todoList.findIndex(todo => todo.id == id);
+  const index = todoList.findIndex((todo) => todo.id == id);
   todoList.splice(index, 1);
   return res.status(204).send("done");
 });
