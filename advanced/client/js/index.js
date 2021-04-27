@@ -1,6 +1,8 @@
-import Store from "./store.js";
+import store from "./store.js";
+import TodoForm from "./components/TodoForm.js";
 
-const store = new Store();
+const todoForm = new TodoForm();
+todoForm.mount();
 
 const initialize = async () => {
   await store.fetchTodoList();
