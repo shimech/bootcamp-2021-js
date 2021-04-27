@@ -14,7 +14,7 @@
     <main>
       <div class="hero">TODO-Manager</div>
       <div class="todo-form__wrapper">
-        <form name="addTodoItem" class="todo-form">
+        <form method="POST" action="/todos" class="todo-form">
           <label for="name" class="todo-form__label">TODO</label>
           <div class="todo-form-input__wrapper">
             <input id="name" name="name" type="text" class="todo-form__input" />
@@ -22,9 +22,7 @@
           </div>
         </form>
       </div>
-      <div class="todos__wrapper">
-        <ul class="todos">
-        </ul>
+      <div class="todo-list__wrapper">
       </div>
       <div class="todo-footer">
         <div class="done-items-num">
@@ -36,6 +34,20 @@
     </footer>
 
     <!-- ここを追加 -->
+    <template id="todo-item">
+      <li class="todo-item">
+        <label class="todo-toggle__container">
+          <input
+            type="checkbox"
+            class="todo-toggle"
+          />
+          <span class="todo-toggle__checkmark"></span>
+        </label>
+        <div class="todo-name"></div>
+        <div class="todo-remove-button">x</div>
+      </li>
+    </template>
+
     <script type="module" src="/js/index.js"></script>
 
   </body>
