@@ -13,10 +13,10 @@ class Todo {
     inputElement.checked = this.props.done;
     const nameElement = clone.querySelector("div.todo-name");
     nameElement.innerText = this.props.name;
-    const removeElement = clone.querySelector("todo-remove-button");
+    const removeElement = clone.querySelector("div.todo-remove-button");
     removeElement.setAttribute("data-todo-id", this.props.id);
 
-    parent.appendChild(clone);
+    this.parent.appendChild(clone);
   }
 }
 

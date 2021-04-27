@@ -1,9 +1,10 @@
-import Todo from "./models/Todo.js";
-import TodoList from "./models/TodoList.js";
+import Todo from "./components/Todo.js";
+import TodoList from "./components//TodoList.js";
 
 class Store {
   constructor() {
     this.baseUrl = "http://localhost:3000/todo";
+    this.data = new TodoList(document, []);
   }
 
   async fetchTodoList() {
@@ -12,17 +13,13 @@ class Store {
       const response = await fetch(url, {
         method: "GET",
       }).then((d) => d.json());
-      this.data = new TodoList(document, []);
-      const todoList = response.todoList.forEach((todo) => {
-        const temp = new Todo(this.data.element, {
+      this.data.props.todoList = response.todoList.map((todo) => {
+        return new Todo(this.data.element, {
           id: todo.id,
           name: todo.name,
           done: todo.done,
         });
-        return temp;
       });
-      console.log(todoList);
-      // this.data.props = todoList
     } catch (err) {
       console.log(err);
     }

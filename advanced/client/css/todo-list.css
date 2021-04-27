@@ -98,7 +98,7 @@
 }
 
 .todo-toggle__container input:checked ~ .todo-toggle__checkmark {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 .todo-toggle__checkmark:after {
