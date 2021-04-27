@@ -8,6 +8,8 @@ class TodoForm {
   mount() {
     this.element.addEventListener("submit", (event) => {
       event.preventDefault();
+      store.addTodoItem(this.element.name.value).then(() => store.render());
+      this.element.name.value = "";
     });
   }
 }
