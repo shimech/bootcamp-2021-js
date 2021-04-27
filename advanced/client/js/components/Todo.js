@@ -24,7 +24,7 @@ class Todo {
     const removeElement = clone.querySelector("div.todo-remove-button");
     removeElement.setAttribute("data-todo-id", this.props.id);
     removeElement.addEventListener("click", () => {
-      console.log("remove");
+      store.deleteTodoItem(this.props.id).then(() => store.render());
     });
 
     this.parent.appendChild(clone);

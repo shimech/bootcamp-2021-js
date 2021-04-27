@@ -66,6 +66,18 @@ class Store {
     }
   }
 
+  async deleteTodoItem(id) {
+    const url = this.baseUrl + `/${id}`;
+    try {
+      const response = await fetch(url, {
+        method: "DELETE",
+      });
+      this.data.props.todoList.splice(id - 1, 1);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   render() {
     this.data.render();
   }
