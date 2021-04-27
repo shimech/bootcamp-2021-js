@@ -1,5 +1,5 @@
 import Todo from "./components/Todo.js";
-import TodoList from "./components//TodoList.js";
+import TodoList from "./components/TodoList.js";
 
 class Store {
   constructor() {
