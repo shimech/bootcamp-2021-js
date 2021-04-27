@@ -1,7 +1,7 @@
 class TodoList {
   constructor(parent, { todoList }) {
     this.parent = parent;
-    this.element = document.querySelector("ul.todos");
+    this.element = document.querySelector("ul.todo-list");
     this.props = { todoList };
   }
 
