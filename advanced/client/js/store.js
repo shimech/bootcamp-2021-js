@@ -4,7 +4,7 @@ import TodoList from "./components//TodoList.js";
 class Store {
   constructor() {
     this.baseUrl = "http://localhost:3000/todo";
-    this.data = new TodoList(document, []);
+    this.data = new TodoList({ todoList: [] });
   }
 
   async fetchTodoList() {
