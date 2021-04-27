@@ -24,6 +24,10 @@ class Store {
       console.log(err);
     }
   }
+
+  render() {
+    this.data.render();
+  }
 }
 
 export default Store;
