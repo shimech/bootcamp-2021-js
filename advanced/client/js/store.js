@@ -60,7 +60,10 @@ class Store {
         name: data.name,
         done: data.done,
       });
-      this.data.props.todoList.splice(data.id - 1, 1, newTodoItem);
+      const index = this.data.props.todoList.findIndex(
+        (todo) => todo.props.id == newTodoItem.props.id
+      );
+      this.data.props.todoList.splice(index, 1, newTodoItem);
     } catch (err) {
       console.log(err);
     }
@@ -72,7 +75,10 @@ class Store {
       const response = await fetch(url, {
         method: "DELETE",
       });
-      this.data.props.todoList.splice(id - 1, 1);
+      const index = this.data.props.todoList.findIndex(
+        (todo) => todo.props.id == id
+      );
+      this.data.props.todoList.splice(index, 1);
     } catch (err) {
       console.log(err);
     }

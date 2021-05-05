@@ -19,12 +19,11 @@ class Todo {
 }
 
 router.post("/initialize", (req, res, next) => {
-  if (todoList.length === 0) {
-    todoList.push(new Todo(1, "牛乳を買う", false));
-    todoList.push(new Todo(2, "部屋の掃除をする", false));
-    todoList.push(new Todo(3, "もうやっていること", true));
-  }
-  return res.status(201).send({});
+  todoList.splice(0);
+  todoList.push(new Todo(1, "牛乳を買う", false));
+  todoList.push(new Todo(2, "部屋の掃除をする", false));
+  todoList.push(new Todo(3, "もうやっていること", true));
+  return res.status(201).send({ todoList: todoList });
 });
 
 router.post("/", (req, res, next) => {
